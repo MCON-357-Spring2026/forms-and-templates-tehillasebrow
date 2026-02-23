@@ -1,29 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Students</h2>
+<h2>Students</h2>
 
-    {% if students|length == 0 %}
-        <p>No students added yet.</p>
-    {% else %}
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>Name</th>
-                <th>Grade</th>
-                <th>Comment</th>
-            </tr>
+{% if students|length == 0 %}
+<p>No students added yet.</p>
+{% else %}
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Comment</th>
+    </tr>
 
-            {% for student in students %}
-                <tr>
-                    <td>{{ student.name }}</td>
-                    <td>{{ student.grade }}</td>
-                    <td>
-                        <!-- TODO: Add conditional comments -->
-                    </td>
-                </tr>
-            {% endfor %}
+    {% for student in students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.grade }}</td>
+        <td>
+            {% if student.grade < 60 %}
+            Needs Improvement
+            {% elif student.grade <= 69 %}
+            Passing
+            {% elif student.grade <= 89 %}
+            Good
+            {% else %}
+            Excellent
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
 
-        </table>
-    {% endif %}
+</table>
+{% endif %}
 
 {% endblock %}
