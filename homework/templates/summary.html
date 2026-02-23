@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Summary</h2>
+<h2>Summary Statistics</h2>
 
-    <!-- TODO: Display summary statistics -->
+<ul>
+    <li><strong>Total Students:</strong> {{ total_students }}</li>
+    <li><strong>Average Grade:</strong> {{ average_grade }}</li>
+    <li><strong>Highest Grade:</strong> {{ max_grade }}</li>
+    <li><strong>Lowest Grade:</strong> {{ low_grade }}</li>
+</ul>
+
+<br>
+<a href="{{ url_for('display_students') }}">View All Students</a> |
+<a href="{{ url_for('add_student') }}">Add Another Student</a>
 
 {% endblock %}
